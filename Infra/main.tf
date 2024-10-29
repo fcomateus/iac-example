@@ -58,8 +58,11 @@ resource "aws_instance" "my-instance" {
         host = self.public_ip
       }
       inline = [ 
-        "sudo apt update",
-        "sudo apt install -y nginx"
+        "sudo apt update -y",
+        "sudo apt install -y nginx",
+        "git clone https://github.com/fcomateus/iac-example.git",
+        "cd iac-example/src/",
+        "sudo cp index.html script.js /var/www/html/"
       ]
     }
 }
